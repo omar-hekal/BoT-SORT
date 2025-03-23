@@ -42,6 +42,9 @@ def main(args):
 
     trainer = DefaultTrainer(cfg)
 
+    # Reduce the number of worker processes
+    cfg.DATALOADER.NUM_WORKERS = min(cfg.DATALOADER.NUM_WORKERS, 4)
+
     trainer.resume_or_load(resume=args.resume)
 
     return trainer.train()
