@@ -71,7 +71,7 @@ class MOT20(ImageDataset):
     def process_dir(self, dir_path, is_train=True):
 
         img_paths = glob.glob(osp.join(dir_path, '*.bmp'))
-        pattern = re.compile(r'([-\d]+)_MOT20-0(\d)')
+        pattern = re.compile(r'([-\d]+)_0(\d)')
 
         data = []
         for img_path in img_paths:
