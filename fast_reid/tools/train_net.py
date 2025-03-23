@@ -42,8 +42,10 @@ def main(args):
 
     trainer = DefaultTrainer(cfg)
 
-    # Reduce the number of worker processes
+    # Defrost the configuration to modify NUM_WORKERS
+    cfg.defrost()
     cfg.DATALOADER.NUM_WORKERS = min(cfg.DATALOADER.NUM_WORKERS, 4)
+    cfg.freeze()
 
     trainer.resume_or_load(resume=args.resume)
 
